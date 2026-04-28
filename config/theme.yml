@@ -1,0 +1,271 @@
+name: ps8-netenvie
+display_name: Classic Rocket Netenvie PS8
+version: 3.1.0
+author:
+  name: "Netenvie"
+  email: "contact@netenvie.com"
+  url: "http://www.netenvie.com"
+
+meta:
+  compatibility:
+      from: 1.7.7.x
+      to: ~
+
+  available_layouts:
+    layout-full-width:
+      name: Full Width
+      description: No side columns, ideal for distraction-free pages such as product pages.
+    layout-both-columns:
+      name: Three Columns
+      description: One large central column and 2 side columns.
+    layout-left-column:
+      name: Two Columns, small left column
+      description: Two columns with a small left column
+    layout-right-column:
+      name: Two Columns, small right column
+      description: Two columns with a small right column
+
+assets:
+  # If you're using this theme as child and you want to load
+  # the parent theme assets, uncomment this line.
+#  use_parent_assets: true
+
+  # The following lines are showing how to load assets in your page
+  # Uncomment and change value to start loading css or js files
+#  css:
+#    all:
+#      - id: custom-lib-style
+#        path: assets/css/custom-lib.css
+#    product:
+#      - id: product-style
+#        path: assets/css/product.css
+#        media: all
+#        priority: 200
+#  js:
+#    cart:
+#      - id: cat-extra-lib
+#        path: assets/js/cart-lib.js
+
+
+global_settings:
+  configuration:
+    PS_IMAGE_QUALITY: png
+  modules:
+   to_enable:
+     - pm_advancedtopmenu
+     - pm_advancedsearch4
+     - ambjolisearch
+     - prettyblocks
+     - ps_linklist
+     - homeproducttabs
+     - pm_advancedcookiebanner
+   to_disable:
+     - ps_mainmenu
+     - ps_facetedsearch
+     - ps_searchbar
+     - ps_imageslider
+     - ps_banner
+     - blockreassurance
+     - ps_featuredproducts
+  hooks:
+    modules_to_hook:
+      displayBanner:
+        - prettyblocks
+        - ps_languageselector
+      displayNav1:
+        - prettyblocks
+      displaySearch:
+        - ambjolisearch
+      displayNav2:
+        - prettyblocks
+        - ps_customersignin
+        - ps_shoppingcart
+      displayTop:
+      displayNavFullWidth:
+        - pm_advancedtopmenu
+      displayHome:
+        - prettyblocks
+        - homeproducttabs
+      displayFooterBefore:
+        - prettyblocks
+      displayFooter:
+        - prettyblocks
+        - ps_linklist
+        - ps_customeraccountlinks
+        - ps_emailsubscription
+      displayFooterAfter:
+        - prettyblocks
+      displayLeftColumn:
+      displayProductAdditionalInfo:
+      displayOrderConfirmation2:
+        - ps_featuredproducts
+      displayCrossSellingShoppingCart:
+        - ps_featuredproducts
+
+  image_types:
+    cart_default:
+      width: 125
+      height: 125
+      scope: [products]
+    small_default:
+      width: 98
+      height: 98
+      scope: [products, categories, manufacturers, suppliers]
+    medium_default:
+      width: 452
+      height: 452
+      scope: [products, manufacturers, suppliers]
+    home_default:
+      width: 250
+      height: 250
+      scope: [products]
+    large_default:
+      width: 800
+      height: 800
+      scope: [products, manufacturers, suppliers]
+    category_default:
+      width: 141
+      height: 180
+      scope: [categories]
+    stores_default:
+      width: 170
+      height: 115
+      scope: [stores]
+    pdt_180:
+      width: 180
+      height: 180
+      scope: [products]
+    pdt_300:
+      width: 300
+      height: 300
+      scope: [products]
+    pdt_360:
+      width: 360
+      height: 360
+      scope: [products]
+    pdt_540:
+      width: 540
+      height: 540
+      scope: [products]
+
+theme_settings:
+  default_layout: layout-full-width
+  layouts:
+    category: layout-left-column
+    best-sales: layout-left-column
+    new-products: layout-left-column
+    prices-drop: layout-left-column
+    contact: layout-left-column
+
+override_settings:
+  class_front_controller:
+    remove_jquery_ui_override: 0 # optimisation chargement js jquery
+    remove_register_stylesheet_override: 0 # optimisation chargement js theme et core
+    remove_register_javascript_override: 0 # optimisation chargement css theme et core
+    remove_display_override: 0
+    display_override_preloads: 1 # ajoute une variable smarty preloads en fonction du controller pour le header
+    display_override_everpsblogpost: 1 # ajoute une variable smarty everpsblogposts (liste des derniers posts)
+    remove_init_content_override: 0
+    init_content_override_cat_descriptions: 1 # split la description de la catégorie (délimitateur)
+    init_content_override_cat_thumb_uri: 1 # ajout de la variable smarty thumbUri (image thumb de la catégorie)
+  class_manufacturer:
+    remove_get_manufacturers_override: 1 # ordonne les marques par la colonne ordre de la table manufacturer_custom
+  controller_product:
+    remove_init_content_override: 0
+    init_content_override_product_descriptions: 1 # split la description du produit (délimitateur) + var smarty manufacturername (nom de la marque)
+    init_content_override_product_all_images: 1 # ajout de la variable smarty allImages (toutes les images du produit)
+    remove_display_ajax_refresh_override: 0
+    display_ajax_refresh_override_product_descriptions: 1 # Ajax : split la description du produit (délimitateur) + var smarty manufacturername (nom de la marque)
+  controller_listing_manufacturer:
+    remove_get_template_var_manufacturers_override: 0 # renvoie la liste des marques avec des infos en plus (fonctionnel ??)
+
+opti_settings:
+  remove_jquery_ui_home_pm_advancedsearch4: true # suprrimer le charguemetn de jquery-ui en home par advancedsearch4
+  ex_home_js: [
+            "everpsblog",
+            "fancybox",
+            "gallerique",
+            "gsnippetsreviews",
+            "loyaltyeditpoints",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "recaptchapro",
+            "stockalert",
+            "www.google.com/recaptcha",
+            "blockwishlist",
+            "modules/pm_crosssellingoncart/views/js/front.js",
+            "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js",
+            "modules/sdevmonetico/views/js/front.js",
+            "blockwishlist"]
+  ex_cat_js: [
+            "an_instagramfeed",
+            "fancybox",
+            "gallerique",
+            "loyaltyeditpoints",
+            "ne_imageslider",
+            "ne_homesection",
+            "ps_emailalerts",
+            "recaptchapro",
+            "stockalert",
+            "www.google.com/recaptcha",
+            "modules/pm_crosssellingoncart/views/js/front.js",
+            "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js"]
+  ex_prod_js: [
+            "fancybox",
+            "gallerique",
+            "blockimgmosaic",
+            "ne_imageslider",
+            "ne_homesection",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "recaptchapro",
+            "www.google.com/recaptcha",
+            "modules/pm_crosssellingoncart/views/js/front.js",
+            "modules/pm_crosssellingoncart/views/js/owl-carousel/owl.carousel.min.js"]
+  ex_cde_js: [
+            "ne_imageslider",
+            "ne_homesection",
+            "netreviews",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "ps_emailsubscription"]
+  ex_home_css: [
+            "everpsblog",
+            "fancybox",
+            "gallerique",
+            //"gsnippetsreviews",
+            "loyaltyeditpoints",
+            "product",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "recaptchapro",
+            "stockalert",
+            "www.google.com/recaptcha",
+            "blockwishlist"]
+  ex_cat_css: [
+            "an_instagramfeed",
+            "fancybox",
+            "gallerique",
+            "loyaltyeditpoints",
+            "ne_imageslider",
+            "ne_homesection",
+            "ps_emailalerts",
+            "recaptchapro",
+            "stockalert",
+            "www.google.com/recaptcha"]
+  ex_prod_css: [
+            "fancybox",
+            "gallerique",
+            "blockimgmosaic",
+            "ne_imageslider",
+            "ne_homesection",
+            "pm_advancedsearch4",
+            "recaptchapro",
+            "www.google.com/recaptcha"]
+  ex_cde_css: [
+            "ne_imageslider",
+            "ne_homesection",
+            "netreviews",
+            "pm_advancedsearch4",
+            "ps_emailalerts",
+            "ps_emailsubscription"]

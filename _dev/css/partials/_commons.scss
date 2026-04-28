@@ -1,0 +1,772 @@
+body {
+    background-color: $wrapper-bg;
+}
+
+[id]:not([id=""]) {
+    scroll-margin-top: $header-height-mobile;
+
+    @include media-breakpoint-desktop {
+        scroll-margin-top: $header-height;
+    }
+}
+
+input,
+button,
+select,
+optgroup,
+textarea {
+    //font-family: $opensans-font;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+h2,
+.h2 {
+    text-transform: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+sup {
+    top: -0.3em;
+}
+
+.l-wrapper {
+    @if $enable-fluid-layout {
+        @extend .container-fluid;
+    }
+
+    @else {
+        @extend .container;
+    }
+
+    &--boxed {
+        @extend .container;
+
+    }
+
+}
+
+.page-wrapper,
+.card-block {
+    @extend .card;
+
+}
+
+.page-header {
+    @extend .card-header;
+
+    h1 {
+        margin-bottom: 0;
+    }
+}
+
+.page-content,
+.card-block {
+    @extend .card-body;
+}
+
+.card-block {
+    box-shadow: $card-box-shadow;
+    ;
+}
+
+.page-footer {
+    @extend .card-footer;
+
+    &:empty {
+        display: none;
+    }
+
+}
+
+.left-column>div,
+.right-column>div {
+    margin-bottom: $spacer;
+}
+
+
+/* wishlist (NETENVIE) */
+
+.wishlist-container {
+    z-index: 1;
+    position: relative;
+}
+
+.wishlist-button-add.wishlist-button-product {
+    display: none;
+}
+
+.wishlist-delete,
+.wishlist-add-to,
+.wishlist-create,
+.wishlist-login,
+.wishlist-rename,
+.wishlist-share {
+    .modal-backdrop.fade {
+        display: none;
+    }
+}
+
+/* FIN wishlist (NETENVIE) */
+
+
+
+/* IMAGE (NETENVIE) */
+
+.bg-cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.cover,
+.bg-cover>img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.md-cover {
+    max-width: 100%;
+
+    @include media-breakpoint-desktop {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+}
+
+/* FIN IMAGE (NETENVIE) */
+
+
+/* BACKGROUND (NETENVIE) */
+
+.bg-black {
+    background: $black;
+}
+
+/* FIN BACKGROUND (NETENVIE) */
+
+/* CMS (NETENVIE) */
+
+#cms {
+    .page-content--cms {
+        h2 {
+            margin-top: 40px;
+        }
+
+        h3 {
+            margin-top: 25px;
+        }
+
+        h4 {
+            margin-top: 15px;
+        }
+
+        h5 {
+            margin-top: 10px;
+        }
+
+        h6 {
+            margin-top: 10px;
+        }
+
+        ul {
+            list-style: disc;
+            padding-left: 25px;
+
+            li {
+                ul {
+                    list-style: circle;
+                }
+            }
+        }
+    }
+}
+
+/* FIN CMS (NETENVIE) */
+
+/* BOUTONS (NETENVIE) */
+
+.btn:not(:disabled):not(.disabled):active:focus,
+.btn:not(:disabled):not(.disabled).active:focus,
+.btn:focus,
+.btn.focus {
+    box-shadow: 0 0 0;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    box-shadow: 0 0 0;
+    font-size: rem(14px);
+    line-height: rem(15px);
+    text-transform: uppercase;
+    border-radius: 0;
+
+    @include media-breakpoint-desktop {
+        height: 38px;
+    }
+
+    &.step-edit {
+        height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn {
+        transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+}
+
+.btn.disabled,
+.btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    &.btn-inverted {
+        &:not(:hover) {
+            color: $primary;
+            border-color: $primary;
+            background: transparent;
+        }
+    }
+}
+
+.btn-secondary {
+    &.btn-inverted {
+        &:not(:hover) {
+            color: $secondary;
+            border-color: $secondary;
+            background: transparent;
+        }
+    }
+}
+
+.btn-white {
+    background: $white;
+    color: $black;
+
+    &:hover {
+        color: $white;
+        border-color: $white;
+        background: transparent;
+    }
+
+    &.btn-inverted {
+        &:not(:hover) {
+            color: $white;
+            border-color: $white;
+            background: transparent;
+        }
+
+        &:hover {
+            background: $white;
+            color: $black;
+        }
+    }
+}
+
+.btn-black {
+    background: $black;
+    color: $white;
+
+    &:hover {
+        color: $black;
+        border-color: $black;
+        background: transparent;
+    }
+
+    &.btn-inverted {
+        &:not(:hover) {
+            color: $black;
+            border-color: $black;
+            background: transparent;
+        }
+
+        &:hover {
+            background: $black;
+            color: $white;
+        }
+    }
+}
+
+.btn-xs,
+.btn-group-xs>.btn {
+    padding: 0.25rem 0.35rem;
+    font-size: 0.625rem;
+    line-height: 0.825rem;
+    height: auto;
+}
+
+.btn-sm,
+.btn-group-sm>.btn {
+    padding: .5rem .6rem;
+    font-size: .825rem;
+    line-height: 1.35;
+    height: auto;
+}
+
+
+.btn-lg,
+.btn-group-lg>.btn {
+    height: 50px;
+    padding: 5px 23px;
+
+    @include media-breakpoint-desktop {
+        height: 60px;
+    }
+}
+
+.btn-xl,
+.btn-group-xl>.btn {
+    line-height: 18px;
+    height: 60px;
+    padding: 5px 28px;
+
+    @include media-breakpoint-desktop {
+        height: 80px;
+    }
+}
+
+/* FIN BOUTONS (NETENVIE) */
+
+/* MODAL (NETENVIE) */
+/*
+.modal {
+    .modal-dialog {
+        margin: 0.25rem auto;
+    }
+
+    .modal-header {
+        border-bottom: 0;
+        padding: 0;
+        background-color: $primary;
+        margin: 0 1px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        @include media-breakpoint-desktop {
+            display: block;
+            background-color: transparent;
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 9;
+            margin: -6px -45px 0 0;
+        }
+
+        .prev-image-modal {
+        }
+
+        .next-image-modal {
+        }
+    }
+
+    .modal-header button, .close {
+        opacity: 1;
+        display: block;
+        text-shadow: 0 0 0;
+        border: 0;
+        background: transparent;
+        color: #fff;
+
+        @include media-breakpoint-desktop {
+            width: auto;
+            font-size: 2rem;
+            text-shadow: 0 0 5px #000;
+        }
+
+        i, span {
+            font-size: 3.5rem;
+            @include media-breakpoint-desktop {
+                font-size: 2.9rem;
+            }
+        }
+        span {
+            margin-right: 10px;
+            @include media-breakpoint-desktop {
+                margin-right: 0;
+            }
+        }
+
+        width: calc(33.33%);
+        cursor: pointer;
+        padding: 0;
+        margin: 0;
+    }
+
+}
+*/
+/* FIN MODAL (NETENVIE) */
+
+
+/* HEADER */
+
+/* FOOTER */
+.l-footer {
+    background-color: $footer-bg;
+    margin-top: $footer-margin-top;
+    padding-top: $footer-padding-top;
+}
+
+/* MISC */
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+h1,
+.h1 {
+    text-transform: $h1-text-transform;
+
+}
+
+.quick-view {
+    display: inline-block;
+    @extend .small;
+}
+
+.form-group.form-group_forgot-password {
+    margin-top: -($form-group-margin-bottom/2);
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+//touch spin
+
+.bootstrap-touchspin {
+    box-shadow: $bs-touchspin-boxshadow;
+    border: $input-border-width solid $input-border-color;
+
+    >input {
+        max-width: 60px;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+        font-weight: 700;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    }
+
+    .btn {
+        position: relative;
+        z-index: 2;
+        color: $input-color;
+        background-color: $white;
+
+    }
+
+    .input-group-btn {
+        display: flex;
+
+        &:first-child {
+            margin-right: -$input-border-width;
+        }
+
+        &:last-child {
+            margin-left: -$input-border-width;
+        }
+    }
+}
+
+/* minimizing reflows and avoiding page jumps */
+
+.rc {
+    position: relative;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    padding-top: 100%;
+    background: rgba(0, 0, 0, 0.05);
+    transition: background 150ms;
+
+    &:after {
+        @extend .spinner-border;
+        content: "";
+        border-color: $gray-300;
+        position: absolute;
+        top: calc(50% - #{($spinner-height/2)});
+        left: calc(50% - #{($spinner-width/2)});
+        z-index: 2;
+        border-right-color: transparent;
+    }
+
+    &--lazyload:after {
+        display: none;
+    }
+}
+
+.rc>* {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.rc>a {
+    display: block;
+}
+
+.ratio2_1 {
+    padding-top: 50%;
+}
+
+.ratio1_2 {
+    padding-top: 200%;
+}
+
+.ratio4_3 {
+    padding-top: 75%;
+}
+
+.ratio16_9 {
+    padding-top: percentage(9/16);
+}
+
+.ratio1_1 {
+    padding-top: 100%;
+}
+
+.ratio3_2 {
+    padding-top: percentage(1-2/3);
+}
+
+/* collapse icons */
+
+.icon-collapse {
+    transition: transform 0.4s ease;
+}
+.icon-collapse[aria-expanded=true] {
+    transform: rotateZ(180deg);
+}
+
+/* CARD */
+/*
+.card-header,
+.address-header {
+    @include media-breakpoint-desktop {
+        padding: 0.75rem 2.25rem;
+    }
+}
+*/
+.address-header,
+.card-header,
+.page-header {
+    cursor: pointer;
+    padding: 0.75rem 2.25rem;
+    //padding: 1.25rem 0.25rem;
+
+    h1 {
+        i {
+            font-size: 1.25rem;
+        }
+    }
+}
+
+.card-header[aria-expanded="true"] {
+    background-color: $primary;
+    color: white;
+
+    .step-title {
+        color: white;
+
+        .done {
+            visibility: hidden;
+        }
+    }
+
+    .btn {
+        display: none;
+    }
+}
+
+.card-body {
+    padding: 1.25rem;
+
+    @include media-breakpoint-desktop {
+        padding: 2.25rem;
+    }
+}
+
+.accordion {
+    .card-body .card {
+        border: 1px solid $card-border-color;
+        transition: border 0.1s linear;
+
+    }
+
+    .card-body .card-header {
+        text-align: center;
+    }
+
+    .selected .card {
+        border-color: $success;
+        border-width: 2px;
+    }
+}
+
+
+
+/* forms */
+
+custom-file-label.selected:after {
+    content: "" !important;
+
+}
+
+.label {
+    @extend label;
+}
+
+/* nav tabs */
+
+.nav-tabs {
+    .nav-link {
+        color: $gray-600;
+        font-weight: 700;
+        padding: .5rem 0.7rem;
+
+        @include media-breakpoint-desktop {
+            padding: .5rem 1rem;
+        }
+    }
+
+    .nav-link.active,
+    .nav-item.show .nav-link {
+        border-bottom-width: 3px;
+    }
+}
+
+.tab-content {
+    padding-top: $spacer;
+}
+
+//products-section-title
+
+.products-section-title {
+    text-transform: $section-title-text-transform;
+    text-align: $section-title-text-align;
+    display: block;
+    margin-bottom: $section-title-margin-bottom;
+    @extend .h1;
+    font-family: $section-title-font-family;
+    color: $section-title-color;
+    font-size: $section-title-size;
+    font-weight: $section-title-font-weight;
+}
+
+//home content spacing
+
+.page-home>* {
+    margin-bottom: $spacer-y;
+}
+
+@include media-breakpoint-mobile() {
+    .modal-footer {
+        flex-direction: column;
+        flex-direction: column-reverse;
+
+        &>.btn {
+            margin: 0;
+            width: 100%
+        }
+
+        & .btn:not(:last-child) {
+            margin-top: $spacer/2;
+        }
+
+    }
+}
+
+.nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .nav-link {
+        white-space: nowrap;
+    }
+}
+
+//forms
+main>.notifications-container {
+    @extend .l-wrapper;
+}
+
+.notifications-container {
+    ul {
+        margin-bottom: 0;
+    }
+}
+
+.js-invalid-feedback-browser:empty {
+    display: none;
+}
+
+.form-group {
+
+    label,
+    .label {
+
+        small,
+        .small {
+            font-size: .75 * $font-size-base;
+        }
+    }
+}
+
+@include media-breakpoint-desktop {
+
+    .page-content,
+    .checkout-form,
+    .page-wrapper--order-confirmation {
+        form {
+            width: 75%;
+            max-width: 650px;
+            margin: 0 auto;
+        }
+    }
+
+    .page-wrapper--order-detail {
+        form {
+            margin: unset;
+        }
+    }
+}
+
+.form-footer {
+    margin-top: $spacer;
+}
+
+// badge order history
+.badge.bright {
+    color: #fff;
+}
