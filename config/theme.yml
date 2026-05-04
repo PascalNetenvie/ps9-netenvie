@@ -1,14 +1,14 @@
 name: ps8-netenvie
-display_name: Classic Rocket Netenvie PS8
+display_name: Classic Netenvie PS9
 version: 3.1.0
 author:
   name: "Netenvie"
   email: "contact@netenvie.com"
-  url: "http://www.netenvie.com"
+  url: "https://www.netenvie.com"
 
 meta:
   compatibility:
-      from: 1.7.7.x
+      from: 9.1.x
       to: ~
 
   available_layouts:
